@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: rammi
+  labels:
+    app: jenkins
+    ver: "1.23"
+spec:  
+  replicas: 4
+  selector:
+    matchLabels:
+      app: jenkins
+  template:
+    metadata:
+      name: rammi
+      labels:
+        app: nginx
+        ver: "1.23"
+    spec: 
+      initContainers:
+        -  image: alpine:3.17
+           name: gani
+           command: ["ping","4","-c","google.com"]
+           
+      containers:
+        - image: jenkins/jenkins:lts-jdk11
+          name: my-jenkins
+          ports:
+            - containerPort: 8080
+              protocol: TCP

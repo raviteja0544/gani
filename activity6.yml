@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: ReplicationController 
+metadata:
+  name: replica-1
+spec:
+  minReadySeconds: 2
+  replicas: 4
+  selector:
+  template:
+    metadata:
+      name: replica-1
+      labels: 
+        app: nginx
+    spec:
+      containers:
+        - name: cont-1
+          image: nginx:1.23
+          ports:
+            - containerPort: 80
+              protocol: TCP  

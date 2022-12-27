@@ -1,0 +1,17 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-container1
+spec: 
+  containers:
+    - image: nginx:1.23
+      name: my-container
+      ports: 
+        - containerPort: 80
+          protocol: TCP
+    - image: alpine:3
+      name: my-container2
+      ports:
+        - containerPort: 8080
+          protocol: TCP       

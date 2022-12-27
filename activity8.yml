@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: kohli
+  labels:
+    app: nginx
+    ver: "1.23"
+spec: 
+  minReadySeconds:
+  replicas:
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      name: kohli1
+      labels:
+        app: nginx
+        ver: "1.23"
+    spec:
+      containers:
+        - name: gani
+          image: nginx:1.23
+          ports:
+            - containerPort: 80
+              protocol: TCP

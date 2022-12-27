@@ -1,0 +1,13 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: hello-pod
+spec:
+  Container:
+    - image: alpine
+      name: alpine
+      ports:
+        - ContainerPort: 8090
+        
+

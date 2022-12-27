@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: ReplicationController
+metadata: 
+  name: ravi 
+spec:
+  minReadySeconds: 2
+  replicas: 2
+  selector: 
+  template: 
+    metadata:
+      name: gani
+      labels:
+        app: nginx
+        ver: "1.23"
+    spec:
+      containers: 
+        - name: pallavi
+          image: nginx:1.23
+          ports:
+            - containerPort: 80 
+              protocol: TCP
+

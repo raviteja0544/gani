@@ -1,0 +1,25 @@
+---
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: con-yml
+spec: 
+  initContainers:
+    - name: alpine1
+      image: alpine:3
+      command:
+        - sleep
+        - "5" 
+    - name: alpine2
+      image: alpine:3
+      command:
+        - sleep
+        - "5"
+  containers:
+    - name: nginx1
+      image: nginx:1.23
+      ports:
+        - containerPort: 80
+          protocol: TCP
+
+        
